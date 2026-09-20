@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^apply_patch$",
+        "hooks": [
+          { "type": "command", "command": "node \"$(git rev-parse --show-toplevel)/.agent-hooks/protect-generated.mjs\"", "timeout": 5 },
+          { "type": "command", "command": "node \"$(git rev-parse --show-toplevel)/.agent-hooks/ui-context.mjs\"", "timeout": 5 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"$(git rev-parse --show-toplevel)/.agent-hooks/validate-stop.mjs\"", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

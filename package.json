@@ -1,0 +1,14 @@
+{
+  "name": "docs-to-hooks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An agent skill for turning repeated project instructions into tested hooks.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "demo": "node scripts/demo.mjs"
+  }
+}

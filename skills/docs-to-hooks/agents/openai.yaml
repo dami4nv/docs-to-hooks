@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs to Hooks"
+  short_description: "Turn repeated agent instructions into tested hooks"
+  default_prompt: "Use $docs-to-hooks to convert repeatable project instructions into tested hooks and retain rules without verified coverage."

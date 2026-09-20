@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(Write|Edit)$",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.agent-hooks/protect-generated.mjs\"", "timeout": 5 },
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.agent-hooks/ui-context.mjs\"", "timeout": 5 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.agent-hooks/validate-stop.mjs\"", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

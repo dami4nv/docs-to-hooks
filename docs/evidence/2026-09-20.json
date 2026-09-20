@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-20",
+  "platform": "macOS",
+  "node": "26.8.1",
+  "codex": {
+    "version": "0.154.0",
+    "activation": "Normal interactive project trust and /hooks review; no trust or sandbox bypass flags.",
+    "protected_file_unchanged": true,
+    "allowed_ui_edit_observed": true,
+    "native_events": [
+      {
+        "script": "ui-context.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "protect-generated.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": "deny",
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "ui-context.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": null,
+        "context": true,
+        "warning": false
+      },
+      {
+        "script": "protect-generated.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "validate-stop.mjs",
+        "event": "Stop",
+        "stop_hook_active": false,
+        "status": 0,
+        "decision": "block",
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "ui-context.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "protect-generated.mjs",
+        "event": "PreToolUse",
+        "tool": "apply_patch",
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "validate-stop.mjs",
+        "event": "Stop",
+        "stop_hook_active": true,
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "validate-stop.mjs",
+        "event": "Stop",
+        "stop_hook_active": false,
+        "status": 0,
+        "decision": "block",
+        "context": false,
+        "warning": false
+      },
+      {
+        "script": "validate-stop.mjs",
+        "event": "Stop",
+        "stop_hook_active": true,
+        "status": 0,
+        "decision": null,
+        "context": false,
+        "warning": true
+      }
+    ],
+    "limits": [
+      "Only native apply_patch and Stop were exercised.",
+      "Commands used a metadata-only tracing wrapper around the shipped scripts.",
+      "Fixture activation does not establish activation in another project."
+    ]
+  },
+  "claude_code": {
+    "version": "2.1.224",
+    "native_result": "blocked",
+    "reason": "Saved OAuth session expired and could not be refreshed; no hook events ran."
+  },
+  "script_sha256": {
+    "catalog-check.mjs": "cd210535805bfdf2becb08daadb3e573af5f3728d8839e48555b730ac82d529b",
+    "lib.mjs": "6d1d9d04c9c4c900bc1824e439556aab80a69ee896dd852396076812b498ce7a",
+    "protect-generated.mjs": "143c0d1f828dc3f0df6d74f9709ba13252e59bf67f63e674fcdae69355394f79",
+    "ui-context.mjs": "1c9e21027e6e07ee3e8305ce567ed742a0ac190ce343349cf30855ba3444791c",
+    "validate-stop.mjs": "c0a5ea98be67655b6e688a464f4840ef67ffb6092856c286ed05a8128bbe0889"
+  }
+}
