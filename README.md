@@ -180,6 +180,26 @@ covers native edit tools, the context hook supplies a reminder, and the Stop
 hook bounds retries rather than guaranteeing successful completion. See
 [coverage details](docs/walkthrough.md#coverage-and-failure-behavior).
 
+## Duplication review skill
+
+The separate [review-duplication skill](skills/review-duplication/SKILL.md) helps
+review new abstractions against existing responsibilities and adapt an OpenCode
+review into a required CI check. It asks for concrete source evidence and
+explicit maintainer dispositions, while preserving legitimate platform and
+authorization boundaries.
+
+Copy `skills/review-duplication` into your project's `.agents/skills/` for Codex
+or `.claude/skills/` for Claude Code, checking first that the destination does not
+already exist. Invoke `$review-duplication` or `/review-duplication` respectively.
+
+This package includes a dependency-free, script-tested report evaluator. It does
+**not** include a live OpenCode runner or automatically activate GitHub protection.
+The skill adapts to existing review infrastructure; model credentials, provider
+selection, authenticated dispositions and a live blocking check must be qualified
+in the target project. Local tests exercise gate behavior with fictional reports,
+not the model's ability to detect duplication. See its
+[integration requirements](skills/review-duplication/references/ci-integration.md).
+
 ## Contributing
 
 A good contribution demonstrates a real instruction, an appropriate event, and
