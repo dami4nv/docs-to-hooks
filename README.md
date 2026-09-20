@@ -5,8 +5,8 @@
 An agent skill that turns repeatable instructions in `CLAUDE.md`, `AGENTS.md`,
 and project rules into tested hooks for **Claude Code and Codex**.
 
-That “always check this” paragraph exists for a reason. Keep the protection.
-Move the check to the moment it matters, instead of asking the agent to keep
+That “always check this” paragraph records a safeguard. Keep the protection.
+Run the check when it applies, instead of asking the agent to keep
 remembering it throughout every task.
 
 ```text
@@ -21,7 +21,7 @@ Docs:    Keep the rationale, exceptions, and implementation pointer.
 ## Why this exists
 
 Good documentation made project knowledge available. Agent instructions now
-often carry another job: remembering safeguards, running checks, and repeating
+often ask models to remember safeguards, run checks, and repeat
 procedures. A growing instruction file can turn into an operating manual the
 agent must carry into unrelated work.
 

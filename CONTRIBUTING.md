@@ -29,7 +29,7 @@ For an adapter, verify installation, payloads, configuration merging, native
 activation, and rollback. A renamed event is not evidence of compatibility.
 Preserve existing user configuration and ensure reruns do not duplicate hooks.
 
-Do not publish customer instructions, private repository details, or claimed
+Do not publish customer instructions or private repository details, or claim
 token savings without reproducible measurements. Do not turn uncertain guidance
 into a blocking rule or remove instructions before coverage and activation pass.
 
