@@ -12,14 +12,18 @@ function files(root) {
   });
 }
 
-const skillRoot = join(repo, 'skills/docs-to-hooks');
-const skill = readFileSync(join(skillRoot, 'SKILL.md'), 'utf8');
-const frontmatter = /^---\n([\s\S]+?)\n---\n/.exec(skill)?.[1];
-assert.ok(frontmatter, 'Missing skill frontmatter');
-assert.match(frontmatter, /^name: docs-to-hooks$/m);
-assert.match(frontmatter, /^description: .{20,}$/m);
-assert.ok(skill.length < 12000, 'Keep the entrypoint small and move details into references');
-assert.match(readFileSync(join(skillRoot, 'agents/openai.yaml'), 'utf8'), /\$docs-to-hooks/);
+const skillRoots = readdirSync(join(repo, 'skills'), { withFileTypes: true })
+  .filter(entry => entry.isDirectory())
+  .map(entry => ({ name: entry.name, root: join(repo, 'skills', entry.name) }));
+for (const { name, root } of skillRoots) {
+  const skill = readFileSync(join(root, 'SKILL.md'), 'utf8');
+  const frontmatter = /^---\n([\s\S]+?)\n---\n/.exec(skill)?.[1];
+  assert.ok(frontmatter, 'Missing skill frontmatter');
+  assert.ok(frontmatter.split('\n').includes(`name: ${name}`), 'Skill name must match directory');
+  assert.match(frontmatter, /^description: .{20,}$/m);
+  assert.ok(skill.length < 12000, 'Keep the entrypoint small and move details into references');
+  assert.ok(readFileSync(join(root, 'agents/openai.yaml'), 'utf8').includes(`$${name}`));
+}
 
 for (const path of files(repo)) {
   if (path.endsWith('.mjs')) {
@@ -33,8 +37,9 @@ for (const path of files(repo)) {
     if (/^(https?:|mailto:|#)/.test(link)) continue;
     const target = resolve(dirname(path), decodeURIComponent(link.split('#')[0]));
     assert.ok(existsSync(target), `Broken link in ${relative(repo, path)}: ${link}`);
-    if (path.startsWith(skillRoot)) {
-      assert.ok(target === skillRoot || target.startsWith(`${skillRoot}/`), 'Installed skill must be self-contained');
+    const owner = skillRoots.find(({ root }) => path.startsWith(`${root}/`));
+    if (owner) {
+      assert.ok(target === owner.root || target.startsWith(`${owner.root}/`), 'Installed skill must be self-contained');
     }
   }
 }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Duplication"
+  short_description: "Review duplicate responsibilities with a CI gate"
+  default_prompt: "Use $review-duplication to inspect existing review automation and add a tested duplication review gate with explicit maintainer dispositions."
